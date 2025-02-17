@@ -1,21 +1,27 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Table = ({data, onDelete}: {
+const Table = ({
+  data,
+  onDelete,
+}: {
   data: { name: string; email: string; phone: string }[];
   onDelete: (index: number) => void;
 }) => {
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = React.useState("");
   const navigate = useNavigate();
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
-  const filteredContacts = data.filter(contact =>
-    contact.email.toLowerCase().includes(searchTerm.toLowerCase())
+
+  const filteredContacts = data.filter((contact) =>
+    contact.email.toLowerCase().includes(searchTerm.toLowerCase()),
   );
+
   return (
     <div className="overflow-x-auto">
-      <div className="mb-4">
+      <div className="mb-4 flex justify-between items-center">
         <input
           type="text"
           placeholder="Search by email"
@@ -23,45 +29,52 @@ const Table = ({data, onDelete}: {
           onChange={handleSearch}
           className="border p-2 rounded"
         />
+        <button
+          onClick={() => navigate("/create")}
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-all duration-300"
+        >
+          + Create New
+        </button>
       </div>
+
+      {/* Desktop Table */}
       <div className="hidden md:block">
         <table className="w-full bg-white border border-gray-200 shadow-lg rounded-lg overflow-hidden">
           <thead className="bg-gray-100">
-          <tr className="text-gray-700">
-            <th className="py-3 px-6 text-left">Name</th>
-            <th className="py-3 px-6 text-left">Email</th>
-            <th className="py-3 px-6 text-left">Phone</th>
-            <th className="py-3 px-6 text-center">Actions</th>
-          </tr>
+            <tr className="text-gray-700">
+              <th className="py-3 px-6 text-left">Name</th>
+              <th className="py-3 px-6 text-left">Email</th>
+              <th className="py-3 px-6 text-left">Phone</th>
+              <th className="py-3 px-6 text-center">Actions</th>
+            </tr>
           </thead>
           <tbody>
-          {filteredContacts.map((item, index) => (
-            <tr
-              key={index}
-              className="border-t hover:bg-gray-50 transition"
-            >
-              <td className="py-3 px-6">{item.name}</td>
-              <td className="py-3 px-6">{item.email}</td>
-              <td className="py-3 px-6">{item.phone}</td>
-              <td className="py-3 px-6 text-center">
-                <button
-                  onClick={() => navigate(`/details/${index}`)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md transition-all duration-300 mr-2"
-                >
-                  Details
-                </button>
-                <button
-                  onClick={() => onDelete(index)}
-                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md transition-all duration-300"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+            {filteredContacts.map((item, index) => (
+              <tr key={index} className="border-t hover:bg-gray-50 transition">
+                <td className="py-3 px-6">{item.name}</td>
+                <td className="py-3 px-6">{item.email}</td>
+                <td className="py-3 px-6">{item.phone}</td>
+                <td className="py-3 px-6 text-center">
+                  <button
+                    onClick={() => navigate(`/details/${index}`)}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md transition-all duration-300 mr-2"
+                  >
+                    Details
+                  </button>
+                  <button
+                    onClick={() => onDelete(index)}
+                    className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md transition-all duration-300"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
+
+      {/* Mobile View */}
       <div className="md:hidden space-y-4">
         {data.map((item, index) => (
           <div
