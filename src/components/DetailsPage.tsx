@@ -1,7 +1,11 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const DetailsPage = ({ data }: { data: { name: string; email: string; phone: string }[] }) => {
+const DetailsPage = ({
+  data,
+}: {
+  data: { name: string; email: string; phone: string; address?: string }[];
+}) => {
   const { index } = useParams<{ index: string }>();
   const navigate = useNavigate();
   const item = index !== undefined ? data[parseInt(index, 10)] : null;
@@ -12,10 +16,21 @@ const DetailsPage = ({ data }: { data: { name: string; email: string; phone: str
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4">User Details</h2>
-      <p className="text-gray-600"><strong>Name:</strong> {item.name}</p>
-      <p className="text-gray-600"><strong>Email:</strong> {item.email}</p>
-      <p className="text-gray-600"><strong>Phone:</strong> {item.phone}</p>
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+        User Details
+      </h2>
+      <p className="text-gray-600">
+        <strong>Name:</strong> {item.name}
+      </p>
+      <p className="text-gray-600">
+        <strong>Email:</strong> {item.email}
+      </p>
+      <p className="text-gray-600">
+        <strong>Phone:</strong> {item.phone}
+      </p>
+      <p className="text-gray-600">
+        <strong>Address:</strong> {item.address}
+      </p>
 
       <button
         onClick={() => navigate("/")}
