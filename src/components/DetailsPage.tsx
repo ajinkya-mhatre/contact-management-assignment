@@ -15,30 +15,36 @@ const DetailsPage = ({
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4">
-        User Details
-      </h2>
-      <p className="text-gray-600">
-        <strong>Name:</strong> {item.name}
-      </p>
-      <p className="text-gray-600">
-        <strong>Email:</strong> {item.email}
-      </p>
-      <p className="text-gray-600">
-        <strong>Phone:</strong> {item.phone}
-      </p>
-      <p className="text-gray-600">
-        <strong>Address:</strong> {item.address}
-      </p>
+    <>
+      <head>
+        <title>User Details</title>
+        <meta name="description" content="User Details" />
+      </head>
+      <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+          User Details
+        </h2>
+        <p className="text-gray-600">
+          <strong>Name:</strong> {item.name}
+        </p>
+        <p className="text-gray-600">
+          <strong>Email:</strong> {item.email}
+        </p>
+        <p className="text-gray-600">
+          <strong>Phone:</strong> {item.phone}
+        </p>
+        <p className="text-gray-600">
+          <strong>Address:</strong> {item.address}
+        </p>
 
-      <button
-        onClick={() => navigate("/")}
-        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-all duration-300"
-      >
-        Back to Table
-      </button>
-    </div>
+        <button
+          onClick={() => navigate("/")}
+          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-all duration-300"
+        >
+          Back to Table
+        </button>
+      </div>
+    </>
   );
 };
 

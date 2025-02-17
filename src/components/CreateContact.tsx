@@ -65,78 +65,86 @@ const CreateContact = ({
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg shadow-md border">
-      <h2 className="text-xl font-semibold mb-4">Create New Contact</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block font-medium mb-1">
-            Name <RequiredIndicator />
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-1">
-            Email <RequiredIndicator />
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-1">
-            Phone <RequiredIndicator />
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
-          {errors.phone && (
-            <p className="text-red-500 text-sm">{errors.phone}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-1">Address</label>
-          <textarea
-            name="phone"
-            value={formData.address}
-            onChange={handleAddressChange}
-            className="w-full border p-2 rounded"
-          />
-        </div>
-        <div className="flex justify-between">
-          <button
-            type="button"
-            onClick={() => navigate("/")}
-            className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
-          >
-            Save Contact
-          </button>
-        </div>
-      </form>
-    </div>
+    <>
+      <head>
+        <title>Create New Contact</title>
+        <meta name="description" content="Create New Contact" />
+      </head>
+      <div className="max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg shadow-md border">
+        <h2 className="text-xl font-semibold mb-4">Create New Contact</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block font-medium mb-1">
+              Name <RequiredIndicator />
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-1">
+              Email <RequiredIndicator />
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-1">
+              Phone <RequiredIndicator />
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone}</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-1">Address</label>
+            <textarea
+              name="phone"
+              value={formData.address}
+              onChange={handleAddressChange}
+              className="w-full border p-2 rounded"
+            />
+          </div>
+          <div className="flex justify-between">
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
+            >
+              Save Contact
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 
